@@ -3,9 +3,9 @@ import { Water } from "three/addons/objects/Water.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { Sky } from "three/addons/objects/Sky.js";
 
-export function resetCameraPosition(controls: OrbitControls, flightWindowRadius: number) {
-    controls.target.set(0, flightWindowRadius / 2, 0)
-    controls.object.position.set(-flightWindowRadius, flightWindowRadius / 2, 0)
+export function resetCameraPosition(controls: OrbitControls) {
+    controls.target.set(0, 50 / 2, 0)
+    controls.object.position.set(-50, 50 / 2, 0)
 }
 
 function radians(degrees: number) {
@@ -17,7 +17,6 @@ export function updateRendererSize(
     container: Ref<HTMLElement | null>,
     renderer: THREE.WebGLRenderer,
     camera: THREE.PerspectiveCamera,
-    flightWindowRadius: number,
     cameraFov: number
 ) {
     if (!parent.value || !container.value) return
@@ -32,10 +31,10 @@ export function updateRendererSize(
 
     const percentage = 0.85
     if (2 * h < w) {
-        camera.position.x = -flightWindowRadius / percentage / 2 / Math.tan(radians(cameraFov) / 2)
+        camera.position.x = -50 / percentage / 2 / Math.tan(radians(cameraFov) / 2)
     } else {
         const hFOV = 2 * Math.atan(Math.tan((camera.fov * Math.PI) / 180 / 2) * camera.aspect)
-        camera.position.x = -flightWindowRadius / percentage / Math.tan(hFOV / 2)
+        camera.position.x = -50 / percentage / Math.tan(hFOV / 2)
     }
 }
 
