@@ -1,0 +1,8 @@
+[package]
+name = "gamepad"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gilrs = "0.10.7"
+tungstenite = "0.21.0"
